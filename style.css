@@ -20,6 +20,11 @@ body
 {
     width: 400px;
     height: 100px;
+    display: flex;
+    font-size: 56px;
+    color: #DDE6ED;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .operation-keys
