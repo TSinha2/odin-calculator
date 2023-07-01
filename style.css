@@ -1,0 +1,50 @@
+body
+{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #27374D
+}
+
+.calculator-outer
+{
+    display: flex;
+    width: 400px;
+    height: 600px;
+    background-color: #526D82;
+    flex-direction: column;
+} 
+
+.input-text
+{
+    width: 400px;
+    height: 100px;
+}
+
+.operation-keys
+{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+    gap: 5px;
+}
+
+.misc-keys
+{
+    display: flex;
+    gap: 5px;
+}
+
+
+.operation-key
+{
+    display: flex;
+    width: 95px;
+    height: 95px;
+    font-family: sans-serif;
+    background-color: #9DB2Bf;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+}
