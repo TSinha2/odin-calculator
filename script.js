@@ -1,5 +1,6 @@
 inputArray = [];
 let operations = "+ \ - x  % = C del".split(" ")
+let exclusionList = 'C del ='.split(" ")
 let num = ""
 
 function parseInputArray(inputArray) {
@@ -43,7 +44,16 @@ buttons.forEach((button) => {
         {
             // Number 'entered' when user presses an operation key
             let operation = button.innerText
+
             console.log("Operation entered " + operation);
+
+            // Reset everything if C is pressed
+            if (operation === 'C')
+            {
+                inputArray = [];
+                num = ''
+                document.querySelector(".input-text").innerText = num;
+            }
             
             // Make sure only a valid number is entered
             if (!(isNaN(num)) && num.length != 0)
@@ -51,7 +61,12 @@ buttons.forEach((button) => {
                 console.log("Number entered " + num)
                 inputArray.push(num);
             }
-            inputArray.push(operation)
+
+            // Only arithmetic operators (+ - % x /) are entered in the array
+            if (!(exclusionList.includes(operation)))
+            {
+                inputArray.push(operation)
+            }
 
 
             // Screen clears
