@@ -74,7 +74,7 @@ buttons.forEach((button) => {
             document.querySelector(".input-text").innerText = "";
 
             // Evaluate input
-            if (inputArray.length > 3)
+            if (inputArray.length > 3 || inputArray.length == 3)
             {
                 let answer = parseInputArray(inputArray);
                 document.querySelector(".input-text").innerText = answer;
