@@ -44,7 +44,6 @@ buttons.forEach((button) => {
         {
             // Number 'entered' when user presses an operation key
             let operation = button.innerText
-
             console.log("Operation entered " + operation);
 
             // Reset everything if C is pressed
@@ -65,7 +64,8 @@ buttons.forEach((button) => {
             // Only arithmetic operators (+ - % x /) are entered in the array
             if (!(exclusionList.includes(operation)))
             {
-                inputArray.push(operation)
+                // inputArray.push(operation)
+                inputArray[1] = operation
             }
 
 
@@ -77,12 +77,22 @@ buttons.forEach((button) => {
             if (inputArray.length > 3 || inputArray.length == 3)
             {
                 let answer = parseInputArray(inputArray).toFixed(5);
-                document.querySelector(".input-text").innerText = answer;
-                inputArray = [answer, operation];
-                if (operation === '=')
+                if (answer != Infinity) // No division by zero
                 {
-                    inputArray = [answer];
+                    document.querySelector(".input-text").innerText = answer;
+                    inputArray = [answer, operation];
+                    if (operation === '=')
+                    {
+                        inputArray = [answer];
+                    }
                 }
+                else // Division by zero
+                {
+                    document.querySelector(".input-text").innerText = 'lol';
+                    inputArray = [];
+                    num = '';
+                }
+
             }
         }
     });
