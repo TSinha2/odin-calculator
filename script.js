@@ -1,6 +1,6 @@
-inputArray = []
+inputArray = [];
 let operations = "+ \ - x  % = C del".split(" ")
-let curr = ""
+let num = ""
 
 function parseInputArray(inputArray) {
     let numA = Number(inputArray[0])
@@ -35,31 +35,40 @@ buttons.forEach((button) => {
         // If button is operation, don't show that as input
         if (!(operations.includes(button.innerText)))
         {
-            document.querySelector(".input-text").innerText =  document.querySelector(".input-text").innerText + button.innerText;
-            curr += button.innerText;
+            num += button.innerText;
+            document.querySelector(".input-text").innerText = num;
         }
-        else
+        // Operation key has been entered
+        else 
         {
-            if (curr.length != 0)
+            // Number 'entered' when user presses an operation key
+            let operation = button.innerText
+            console.log("Operation entered " + operation);
+            
+            // Make sure only a valid number is entered
+            if (!(isNaN(num)) && num.length != 0)
             {
-                document.querySelector(".input-text").innerText =  '';
-                inputArray.push(curr)
-                curr = ""
+                console.log("Number entered " + num)
+                inputArray.push(num);
             }
+            inputArray.push(operation)
 
-            if (inputArray.length === 3)
+
+            // Screen clears
+            num = "";
+            document.querySelector(".input-text").innerText = "";
+
+            // Evaluate input
+            if (inputArray.length > 3)
             {
-                let answer = parseInputArray(inputArray)
-                document.querySelector(".input-text").innerText = answer;  
-                inputArray = [answer]      
+                let answer = parseInputArray(inputArray);
+                document.querySelector(".input-text").innerText = answer;
+                inputArray = [answer, operation];
+                if (operation === '=')
+                {
+                    inputArray = [answer];
+                }
             }
-
-            if (inputArray.length === 1 && operations.includes(button.innerText))
-            {
-                inputArray.push(button.innerText)                
-            }
-
-
         }
     });
 });
