@@ -52,8 +52,23 @@ buttons.forEach((button) => {
                 inputArray = [];
                 num = ''
                 document.querySelector(".input-text").innerText = num;
+                return;
             }
-            
+
+            if (operation === 'del')
+            {
+                let temp = ''
+                for (let i = 0; i < num.length-1; i++)
+                {
+                    temp += num[i];
+                }
+                num = temp
+                document.querySelector(".input-text").innerText = num;
+                return;
+            }
+
+
+
             // Make sure only a valid number is entered
             if (!(isNaN(num)) && num.length != 0)
             {
