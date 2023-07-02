@@ -73,7 +73,15 @@ buttons.forEach((button) => {
             if (!(isNaN(num)) && num.length != 0)
             {
                 console.log("Number entered " + num)
-                inputArray.push(num);
+                // inputArray.push(num);
+                if (inputArray[0] === undefined)
+                {
+                    inputArray[0] = num
+                }
+                else
+                {
+                    inputArray[2] = num                    
+                }
             }
 
             // Only arithmetic operators (+ - % x /) are entered in the array
