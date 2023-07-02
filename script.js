@@ -1,5 +1,5 @@
 inputArray = [];
-let operations = "+ \ - x  % = C del".split(" ")
+let operations = "+ ÷ - x  % = C del".split(" ")
 let exclusionList = 'C del ='.split(" ")
 let num = ""
 
@@ -17,7 +17,7 @@ function parseInputArray(inputArray) {
         case "x":
             return numA * numB;
     
-        case "/":
+        case "÷":
             return numA / numB;
 
         case "%":
@@ -76,7 +76,7 @@ buttons.forEach((button) => {
             // Evaluate input
             if (inputArray.length > 3 || inputArray.length == 3)
             {
-                let answer = parseInputArray(inputArray);
+                let answer = parseInputArray(inputArray).toFixed(5);
                 document.querySelector(".input-text").innerText = answer;
                 inputArray = [answer, operation];
                 if (operation === '=')
